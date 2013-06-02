@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Plu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+<!-- codemirror -->
+<script src="js/codemirror.js"></script>
+<link rel="stylesheet" href="css/codemirror.css">
+<script src="js/perl.js"></script>
+
+</head>
+
+<body>
+
+<h1>plu</h1>
+<textarea id="code">
+print 'Hello World'
+</textarea>
+<button onclick="executePerl(myCodeMirror.getValue()); return false" id="execute">Execute</button>
+<button onclick="clear_output(); return false" id="clear_output">Clear</button>
+<h4>Output</h4>
+<pre id="output"></pre>
+<script>
+var outputElement = document.getElementById('output');
+var myCodeMirror = CodeMirror.fromTextArea(document.getElementById('code'));
+var output = function (x) {
+    outputElement.innerHTML = outputElement.innerHTML + String.fromCharCode(x);
+};
+var input = function () { };
+
+var Module = {
+    noInitialRun: true,
+    noExitRuntime: true,
+    noFSInit: true,
+    preRun: function () {
+        var devFolder = FS.findObject("/dev") || FS.createFolder('/', 'dev', true, true)
+        var null_in = function (all_input) { return;};
+        var null_out = function () { return "5";};
+        var ops = {isDevice: true, isFolder : false, input: null_in, output: null_out};
+        FS.createObject("/dev", "null", ops, true, true);
+        FS.init(input, output, output)
+     },
+    print: output
+};
+
+</script>
+
+<script src="js/microperl.js"></script>
+
+<script>
+function clear_output() {
+    outputElement.innerHTML = '';
+}
+function executePerl(code) {
+    ret = ccall('perl_eval', ['string'], ['string'], [code]);
+}
+</script>
+
+</body>
+</html>
+
