@@ -2,6 +2,7 @@ CC = emcc
 LD = $(CC)
 CCFLAGS = -O2 --closure 0 -s EXPORTED_FUNCTIONS="['_perl_eval', '_main']" -s VERBOSE=1
 PLU_OUT = plu.js
+FIXED_PLU_OUT = microperl.js
 DEBUG_FLAGS = -O2 --closure 0 -s EXCEPTION_DEBUG=1 -s LABEL_DEBUG=1 -s EXPORTED_FUNCTIONS="['_perl_eval', '_main']" -s VERBOSE=1
 MINIPERLMAIN = miniperlmain.c
 
@@ -41,7 +42,10 @@ O = uav$(_O) udeb$(_O) udoio$(_O) udoop$(_O) udump$(_O) \
 	unumeric$(_O) ulocale$(_O) umathoms$(_O) \
 	uuniversal$(_O) uutf8$(_O) uutil$(_O) uperlapi$(_O) ukeywords$(_O)
 
-plu: $(PLU_OUT)
+plu: $(PLU_OUT) $(FIXED_PLU_OUT)
+
+$(FIXED_PLU_OUT): $(PLU_OUT)
+	perl patch-plu-js.pl $< $@
 
 $(PLU_OUT): $(O)
 	$(LD) -o $(PLU_OUT) $(O) $(LDFLAGS) $(LIBS)
