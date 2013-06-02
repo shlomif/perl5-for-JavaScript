@@ -115,8 +115,8 @@ ukeywords$(_O):	$(HE) keywords.c
 umg$(_O):	$(HE) mg.c
 	$(CC) $(CCFLAGS) -o $@ $(CFLAGS) mg.c
 
-uperlmain$(_O):	$(HE) $MINIPERLMAIN
-	$(CC) $(CCFLAGS) -o $@ $(CFLAGS) $MINIPERLMAIN
+uperlmain$(_O):	$(HE) $(MINIPERLMAIN)
+	$(CC) $(CCFLAGS) -o $@ $(CFLAGS) $(MINIPERLMAIN)
 
 uop$(_O):	$(HE) op.c keywords.h
 	$(CC) $(CCFLAGS) -o $@ $(CFLAGS) -DPERL_EXTERNAL_GLOB op.c
