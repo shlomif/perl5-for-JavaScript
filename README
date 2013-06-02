@@ -1,3 +1,7 @@
+Live
+^^^^
+http://themucker.github.io/plu/
+
 ABOUT
 ^^^^^
 plu is perl without CPAN/POSIX/XS/Bundled Modules, aka just
@@ -26,9 +30,9 @@ INSTALLING
 ** the generated js file has two problemtic lines, in init
    method.
 
-(near)1291: var devFolder = FS.createFolder('/', 'dev', true, true);/
+(near)1291: var devFolder = FS.createFolder('/', 'dev', true, true);
      change it to
-     var devFolder = FS.findObject('/dev') || FS.createFolder('/', 'dev', true, true);/
+     var devFolder = FS.findObject('/dev') || FS.createFolder('/', 'dev', true, true);
 (near)1348: ... ALLOC_DYNAMIC ...
       change it to
       ALLOC_STATIC or ALLOC_NORMAL
