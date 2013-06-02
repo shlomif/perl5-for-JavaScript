@@ -1,6 +1,8 @@
 Live
 ^^^^
 http://themucker.github.io/plu/
+Tested with FF17, FF20, C29
+Does not work on mobile browsers
 
 ABOUT
 ^^^^^
@@ -46,6 +48,8 @@ SHOUTOUT
 ^^^^^^^^
 * http://kripken.github.io/lua.vm.js/lua.vm.js.html
   (for inspiration)
+* Shlomi Fish (http://www.shlomifish.org/) from #perl for his patient testing 
+  and support.
 
 TODO
 ^^^^
