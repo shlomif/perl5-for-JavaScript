@@ -42,7 +42,7 @@ INSTALLING
       ALLOC_STATIC or ALLOC_NORMAL
 
 **NOTE**
-These two issues are is issue is closed as of, Jun 3 2013.
+These two issues are fixed in emscripten as of Jun 3 2013.
 see: https://github.com/kripken/emscripten/commit/e94f8f736b347d23d714f3b07cd44629f5b1ab93
 
 web_repl/js/microperl.js has these patches applied
