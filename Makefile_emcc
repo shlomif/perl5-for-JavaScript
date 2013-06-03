@@ -3,18 +3,12 @@ LD = $(CC)
 CCFLAGS = -O2 --closure 0 -s EXPORTED_FUNCTIONS="['_perl_eval', '_main']" -s VERBOSE=1
 PLU_OUT = plu.js
 FIXED_PLU_OUT = microperl.js
-DEBUG_FLAGS = -O2 --closure 0 -s EXCEPTION_DEBUG=1 -s LABEL_DEBUG=1 -s EXPORTED_FUNCTIONS="['_perl_eval', '_main']" -s VERBOSE=1
 MINIPERLMAIN = miniperlmain.c
 
-ifeq ($(DEBUG),1)
-	CCFLAGS = $(DEBUG_FLAGS)
-	PLU_OUT = plu.debug.js
-else
-endif
-
 ifeq ($(CONSOLE),1)
+	PLU_OUT = plu.console.js
 	MINIPERLMAIN = miniperlmain_bak.c
-	CCFLAGS = -O2 --closure 0 -s VERBOSE=1
+	CCFLAGS = $(DEBUG_FLAGS)
 else
 endif
 
