@@ -39,7 +39,8 @@ O = uav$(_O) udeb$(_O) udoio$(_O) udoop$(_O) udump$(_O) \
 plu: $(PLU_OUT) $(FIXED_PLU_OUT)
 
 $(FIXED_PLU_OUT): $(PLU_OUT)
-	perl patch-plu-js.pl $< $@
+	# perl patch-plu-js.pl $< $@
+	cp -f $< $@
 
 $(PLU_OUT): $(O)
 	$(LD) -o $(PLU_OUT) $(O) $(LDFLAGS) $(LIBS)

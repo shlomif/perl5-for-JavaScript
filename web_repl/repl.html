@@ -42,11 +42,14 @@ var Module = {
     noExitRuntime: true,
     noFSInit: true,
     preRun: function () {
-        var devFolder = FS.findObject("/dev") || FS.createFolder('/', 'dev', true, true)
-        var null_in = function (all_input) { return;};
-        var null_out = function () { return "5";};
-        var ops = {isDevice: true, isFolder : false, input: null_in, output: null_out};
-        FS.createObject("/dev", "null", ops, true, true);
+        /* No longer needed because emscripten already contains /dev/null */
+        if (false) {
+            var devFolder = FS.findObject("/dev") || FS.createFolder('/', 'dev', true, true);
+            var null_in = function (all_input) { return;};
+            var null_out = function () { return "5";};
+            var ops = {isDevice: true, isFolder : false, input: null_in, output: null_out};
+            FS.createDevice("/dev", "null", null_in, null_out);
+        }
         FS.init(input, output, output)
      },
     print: output
