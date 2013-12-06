@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Plu</title>
+<title>perl 5 for JavaScript</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -21,14 +21,44 @@
 
 <body>
 
-<h1>plu</h1>
+<h1>perl 5 for JavaScript</h1>
+
 <textarea id="code">
 print 'Hello World'
 </textarea>
+
 <button onclick="executePerl(myCodeMirror.getValue()); return false" id="execute">Execute</button>
+
 <button onclick="clear_output(); return false" id="clear_output">Clear</button>
+
 <h4>Output</h4>
+
 <pre id="output"></pre>
+
+<h2>Links and Credits</h2>
+
+<ul>
+<li>
+<p>
+<a href="https://github.com/shlomif/plu">Source Code</a>
+</p>
+</li>
+
+<li>
+<p>
+<a href="https://github.com/kripken/emscripten/wiki">The Emscripten LLVM-to-JavaScript compiler</a>
+</p>
+</li>
+
+<li>
+<p>
+<a href="http://perl-begin.org/">The Perl Beginners Site</a>
+</p>
+</li>
+
+</ul>
+
+
 <script>
 var outputElement = document.getElementById('output');
 var myCodeMirror = CodeMirror.fromTextArea(document.getElementById('code'));
