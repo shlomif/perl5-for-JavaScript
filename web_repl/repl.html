@@ -18,6 +18,9 @@
 <script src="js/perl.js"></script>
 <script src="js/jquery.js"></script>
 
+<style type="text/css">
+.sub_out { border: red solid 3px; }
+</style>
 </head>
 
 <body>
@@ -28,7 +31,7 @@
 print 'Hello World'
 </textarea>
 
-<button onclick="executePerl(myCodeMirror.getValue()); return false" id="execute">Execute</button>
+<button onclick="perl_wrapper()" id="execute">Execute</button>
 
 <button onclick="clear_output(); return false" id="clear_output">Clear</button>
 
@@ -61,11 +64,28 @@ print 'Hello World'
 
 
 <script>
-var outputElement = document.getElementById('output');
+var outputElement = $("#output");
+
+function get_init_sub_out() {
+    return $('<div class="sub_out"></div>');
+}
+var sub_output = get_init_sub_out();
+
 var myCodeMirror = CodeMirror.fromTextArea(document.getElementById('code'));
+
+function stop_output() {
+    outputElement.append(sub_output);
+    sub_output = get_init_sub_out();
+
+    return;
+}
+
 var output = function (x) {
-    outputElement.innerHTML = outputElement.innerHTML + String.fromCharCode(x);
+    sub_output.append( String.fromCharCode(x) );
+
+    return;
 };
+
 var input = function () { };
 
 var Module = {
@@ -91,12 +111,21 @@ var Module = {
 <script src="js/microperl.js"></script>
 
 <script>
+
 function clear_output() {
     outputElement.innerHTML = '';
 }
+
 function executePerl(code) {
     ret = ccall('perl_eval', ['string'], ['string'], [code]);
 }
+
+function perl_wrapper() {
+    executePerl(myCodeMirror.getValue());
+    stop_output();
+    return false;
+}
+
 </script>
 
 </body>
