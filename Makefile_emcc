@@ -1,6 +1,6 @@
 CC = emcc
 LD = $(CC)
-CCFLAGS = -O2 --closure 0 -s EXPORTED_FUNCTIONS="['_perl_eval', '_main']" -s VERBOSE=1
+CCFLAGS = -O2 --closure 0 -s EXPORTED_FUNCTIONS="['_perl_eval', '_main']" -s VERBOSE=1 -std=c90 -Wno-error-implicit-function-declaration
 PLU_OUT = plu.js
 FIXED_PLU_OUT = microperl.js
 MINIPERLMAIN = miniperlmain.c
@@ -43,7 +43,7 @@ $(FIXED_PLU_OUT): $(PLU_OUT)
 	cp -f $< $@
 
 $(PLU_OUT): $(O)
-	$(LD) -o $(PLU_OUT) $(O) $(LDFLAGS) $(LIBS)
+	$(LD) -o $(PLU_OUT) $(shell perl emcc-embed-munge.pl lib /usr/local/lib/perl5/5.16 `find lib -name '*.pm'`) $(O) $(LDFLAGS) $(LIBS)
 
 generated_headers = uuudmap.h ubitcount.h umg_data.h
 
