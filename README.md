@@ -1,4 +1,4 @@
-.h1 Live
+# Live
 
 * http://www.shlomifish.org/microperl-web-repl-v1/repl.html
 
@@ -6,13 +6,13 @@
 
 * May not work on mobile browsers.
 
-.h2 About
+## About
 
 This  is perl without CPAN/POSIX/XS/Bundled Modules, aka just
 perl and none of the fluff. It is derived from the microperl
 and miniperl build files of the perl-5.16.3 code.
 
-.h2 Installation
+## Installation
 
 * Linux
 
@@ -41,7 +41,7 @@ Open web_repl/repl.html in a browser !
 There is also a CONSOLE=1 make option which generates
 plu.console.js, for debugging.
 
-.h2 Shoutout
+## Shoutout
 
 * http://kripken.github.io/lua.vm.js/lua.vm.js.html (for inspiration)
 
@@ -50,7 +50,7 @@ plu.console.js, for debugging.
 * Shlomi Fish (http://www.shlomifish.org/) from #perl (me) for later
   updates
 
-.h2 TODO
+## TODO
 
 * Unit test emscripten code.
 * Write limitations.
@@ -59,7 +59,7 @@ plu.console.js, for debugging.
 * s/js/perl/ ? (Don't think so, but a possibility).
 * Experiment with the perl source code for fun and profit !
 
-.h2 License
+## License
 
 Artistic License 1 + GPLv1-or-above
 
